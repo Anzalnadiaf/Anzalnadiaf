@@ -1,0 +1,322 @@
+DATABASE ANCLENX STORE
+(OlShopClenx)
+
+=====================
+RANCANGAN DB AS
+=====================
+
+tbmember
+idmember-VARCHAR(10)-PK
+username-VARCHAR(50)
+password-VARCHAR(50)
+email-VARCHAR(50)
+fullname-VARCHAR(40)
+alamat-VARCHAR(100)
+telepon-VARCHAR(20)
+jk-VARCHAR(8)
+
+tbproduk
+idproduk-VARCHAR(10) PK
+namaproduk-VARCHAR(50)
+jenis-VARCHAR(20)
+keterangan-VARCHAR(150)
+stok-INT
+harga-INT
+gambar-VARCHAR(50)
+
+tbkeranjang
+idkeranjang-VARCHAR(10) PK
+idmember-VARCHAR(10) FK
+idproduk-VARCHAR(10) FK
+qty-INT
+
+tbrating
+idrating-INT PK
+idmember-VARCHAR(10) FK
+idproduk-VARCHAR(10) FK
+value-INT
+
+tbkomentar
+idkomentar-INT PK
+idmember-VARCHAR(10) FK
+idproduk-VARCHAR(10) FK
+pesan-VARCHAR(150)
+
+tbtransaksi
+idtransaksi-INT PK
+idmember-VARCHAR(10) FK
+idproduk-VARCHAR(10) FK
+qty-INT
+status-VARCHAR(10)
+
+
+=============================
+Query Tabel AS
+=============================
+
+CREATE DATABASE Anclenx_Store;
+idmember-VARCHAR(10)-PK
+username-VARCHAR(50)
+password-VARCHAR(50)
+email-VARCHAR(50)
+fullname-VARCHAR(40)
+alamat-VARCHAR(100)
+telepon-VARCHAR(20)
+jk-VARCHAR(8)
+
+CREATE TABLE tbmember(
+	idmember VARCHAR(10) NOT NULL,
+	username VARCHAR(50) NOT NULL,
+	password VARCHAR(50) NOT NULL,
+	email VARCHAR(50) NOT NULL,
+	fullname VARCHAR(40) NOT NULL,
+	alamat VARCHAR(100) NOT NULL,
+	telepon VARCHAR(20) NOT NULL,
+	jk VARCHAR(8) NOT NULL,
+	PRIMARY KEY (idmember)
+)ENGINE = InnoDB;
+
+idproduk-VARCHAR(10) PK
+namaproduk-VARCHAR(50)
+jenis-VARCHAR(20)
+keterangan-VARCHAR(150)
+stok-INT
+harga-INT
+gambar-VARCHAR(50)
+
+CREATE TABLE tbproduk(
+	idproduk VARCHAR(10) NOT NULL,
+	namaproduk VARCHAR(50) NOT NULL,
+	jenis VARCHAR(20) NOT NULL,
+	keterangan VARCHAR(100),
+	stok INT(10) NOT NULL,
+	harga INT(15) NOT NULL,
+	garmbar VARCHAR(50),
+	PRIMARY KEY (idproduk)
+)ENGINE = InnoDB;
+
+tbkeranjang
+idkeranjang-VARCHAR(10) PK
+idmember-VARCHAR(10) FK
+idproduk-VARCHAR(10) FK
+qty-INT
+
+-- foreign key: idmember, idproduk,
+CREATE TABLE tbkeranjang(
+	idkeranjang VARCHAR(10) NOT NULL,
+	idmember VARCHAR(10) NOT NULL,
+	idproduk VARCHAR(10) NOT NULL,
+	qty INT(8) NOT NULL,
+	PRIMARY KEY (idkeranjang)
+)ENGINE = InnoDB;
+
+tbrating
+idrating-INT PK
+idmember-VARCHAR(10) FK
+idproduk-VARCHAR(10) FK
+value-INT
+
+-- foreign key: idmember, idproduk,
+CREATE TABLE tbrating(
+	idrating INT,
+	idmember VARCHAR(10) NOT NULL,
+	idproduk VARCHAR(10) NOT NULL,
+	value INT NOT NULL,
+	PRIMARY KEY (idrating)
+)ENGINE = InnoDB;
+
+tbkomentar
+idkomentar-INT PK
+idmember-VARCHAR(10) FK
+idproduk-VARCHAR(10) FK
+pesan-VARCHAR(150)
+
+-- foreign key: idmember, idproduk,
+CREATE TABLE tbkomentar(
+	idkomentar INT NOT NULL,
+	idmember VARCHAR(10) NOT NULL,
+	idproduk VARCHAR(10) NOT NULL,
+	pesan VARCHAR(150) NULL,
+	PRIMARY KEY (idkomentar)
+)ENGINE = InnoDB;
+
+tbtransaksi
+idtransaksi-INT PK
+idmember-VARCHAR(10) FK
+idproduk-VARCHAR(10) FK
+qty-INT
+status-VARCHAR(10)
+
+-- foreign key: idmember, idproduk,
+CREATE TABLE tbtransaksi(
+	idtransaksi INT NOT NULL,
+	idmember VARCHAR(10) NOT NULL,
+	idproduk VARCHAR(10) NOT NULL,
+	qty INT NOT NULL,
+	status VARCHAR(10) NOT NULL,
+	PRIMARY KEY (idtransaksi)
+) ENGINE = InnoDB;
+
+INSERT INTO tbproduk (idproduk, namaproduk, jenis, keterangan, stok, harga, gambar)
+VALUES ('AS001','5 Diamond MLBB','Top Up','Masukkan UID dan IDS kamu yang ada di pojok kanan atas profile MLBB kamu','10000','1500','SEDANG PROSES'),
+('AS002','13 Diamond MLBB','Top Up','Masukkan UID dan IDS kamu yang ada di pojok kanan atas profile MLBB kamu','10000','3500','SEDANG PROSES'),
+('AS003','28 Diamond MLBB','Top Up','Masukkan UID dan IDS kamu yang ada di pojok kanan atas profile MLBB kamu','10000','7500','SEDANG PROSES'),
+('AS004','44 Diamond MLBB','Top Up','Masukkan UID dan IDS kamu yang ada di pojok kanan atas profile MLBB kamu','10000','11000','SEDANG PROSES'),
+('AS005','59 Diamond MLBB','Top Up','Masukkan UID dan IDS kamu yang ada di pojok kanan atas profile MLBB kamu','10000','16000','SEDANG PROSES'),
+('AS006','85 Diamond MLBB','Top Up','Masukkan UID dan IDS kamu yang ada di pojok kanan atas profile MLBB kamu','10000','24000','SEDANG PROSES'),
+('AS007','170 Diamond MLBB','Top Up','Masukkan UID dan IDS kamu yang ada di pojok kanan atas profile MLBB kamu','10000','48000','SEDANG PROSES'),
+('AS008','230 Diamond MLBB','Top Up','Masukkan UID dan IDS kamu yang ada di pojok kanan atas profile MLBB kamu','10000','67000','SEDANG PROSES'),
+('AS009','296 Diamond MLBB','Top Up','Masukkan UID dan IDS kamu yang ada di pojok kanan atas profile MLBB kamu','10000','80000','SEDANG PROSES'),
+('AS010','408 Diamond MLBB','Top Up','Masukkan UID dan IDS kamu yang ada di pojok kanan atas profile MLBB kamu','10000','114000','SEDANG PROSES'),
+('AS011','568 Diamond MLBB','Top Up','Masukkan UID dan IDS kamu yang ada di pojok kanan atas profile MLBB kamu','10000','156000','SEDANG PROSES'),
+('AS012','875 Diamond MLBB','Top Up','Masukkan UID dan IDS kamu yang ada di pojok kanan atas profile MLBB kamu','10000','240000','SEDANG PROSES'),
+('AS013','2010 Diamond MLBB','Top Up','Masukkan UID dan IDS kamu yang ada di pojok kanan atas profile MLBB kamu','10000','522000','SEDANG PROSES'),
+('AS014','4830 Diamond MLBB','Top Up','Masukkan UID dan IDS kamu yang ada di pojok kanan atas profile MLBB kamu','10000','1254000','SEDANG PROSES'),
+('AS015','60 Genesis Crystals','Top Up','Masukkan UID kamu yang ada di pojok kanan atas profile Genshin Impact kamu','2000','16000','SEDANG PROSES'),
+('AS016','330 Genesis Crystals','Top Up','Masukkan UID kamu yang ada di pojok kanan atas profile Genshin Impact kamu','2000','79000','SEDANG PROSES');
+
+====================
+PERTEMUAN 2 (TRANSACTION CONTROL LANGUAGE)
+====================
+
+LOAD DATA INFILE
+
+LOAD DATA LOCAL INFILE 'C:/Users/ACER/OneDrive/Documents/Anzalnadi/data_member.txt'
+INTO TABLE tbmember
+FIELDS TERMINATED BY ';'
+ESCAPED BY ''
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\n';
+
+UPDATE OR DELETE ORDER BY LIMIT
+
+UPDATE tbproduk
+SET namaproduk ='60 Genesis Crystal'
+ORDER BY idproduk LIMIT 7;
+
+SELECT * FROM tbmember 
+WHERE username REGEXP '^[a].*[aiueo]$';
+
+
+SELECT stok, harga
+INTO @stok, @harga
+FROM tbproduk
+WHERE idproduk = 'AS001';
+
+SET autocommit=0;
+START TRANSACTION;
+UPDATE tbmember SET username='Ancleng' WHERE idmember='ASM0001';
+SAVEPOINT a;
+
+INSERT INTO tbmember VALUES ('ASM0002','Latifah','latifah2003','latifah121@gmail.com', 'Latifah Nur Junaedayah', 'Bogor', '083866843896', 'P');
+SAVEPOINT b;
+
+======================
+PERTEMUAN 3
+======================
+
+DELIMITER $$
+CREATE OR REPLACE PROCEDURE TambahMember(IN idmember VARCHAR(40),
+IN username VARCHAR(50),
+IN password VARCHAR(20),
+IN email VARCHAR(20))
+
+BEGIN
+INSERT INTO tbmember
+VALUES
+(idmember, username, password, email
+);
+END$$
+
+CALL TambahMember ('ASM0003','Anzalnadi','anzalnadi2003','anzalnadi1@gmail.com');
+
+
+DELIMITER $$
+CREATE OR REPLACE PROCEDURE UbahMember(IN idmember VARCHAR(10),
+IN username VARCHAR(50),
+IN password VARCHAR(20),
+IN email VARCHAR(20))
+BEGIN
+UPDATE tbmember
+SET username = nama_pengguna, password = kata_sandi, email = gmail
+WHERE idmember = id_member;
+END$$
+
+CALL UbahMember ('ASM0001', 'Anzalnadi', 'anzalnadi1', 'anzalnadi111@gmail.com');
+
+
+DELIMITER $$
+CREATE OR REPLACE PROCEDURE HapusMember(IN idmember VARCHAR(10),
+IN username VARCHAR(50),
+IN password VARCHAR(20),
+IN email VARCHAR(20))
+BEGIN
+DELETE FROM tbmember
+WHERE idmember = id_member;
+END$$
+
+DELIMITER $$
+CREATE PROCEDURE JumlahMember(IN idmember VARCHAR(10), OUT hasil INT)
+BEGIN
+SELECT COUNT(*) INTO hasil FROM tbmember
+WHERE idmember = id_member;
+END$$
+
+==================
+PERTEMUAN 4
+==================
+
+CREATE
+	[DEFINER = { idmember | CURRENT_USER }]
+	PROSEDURE TambahMember (proc_parameter[,...])
+	[characteristic ...] routine_body;
+
+*SP tanpa parameter
+
+DELIMITER $$
+CREATE OR REPLACE PROCEDURE
+TampilProduk()
+BEGIN
+	SELECT * FROM tbproduk;
+END$$
+DELIMITER ;
+CALL TampilProduk();
+
+*SP parameter IN
+
+DELIMITER $$
+CREATE PROCEDURE TampilProduk2
+(idproduk VARCHAR(10))
+BEGIN
+SELECT * FROM tbproduk
+WHERE idproduk = idproduk;
+END$$
+DELIMITER ;
+CALL TampilProduk2('AS0001');
+
+*SP Parameter INOUT
+
+DELIMITER $$
+CREATE PROCEDURE JumlahProduk(IN idproduk VARCHAR(10), OUT hasil INT)
+BEGIN
+SELECT COUNT(*) INTO hasil FROM tbproduk
+WHERE stok=stok;
+END$$
+DELIMITER ;
+CALL JumlahProduk('10000',@n);
+SELECT @n;
+
+*PENGUNAAN FUNCTION SQL
+
+DELIMITER $$
+CREATE OR REPLACE FUNCTION hitungusia(tgllahir DATE)
+RETURNS INT
+BEGIN
+RETURN TIMESTAMPDIFF(YEAR, tgllahir, CURDATE());
+END $$
+
+SELECT hitungusia('2003-04-09');
+SELECT REVERSE('MASA PERBAIKAN');
+SELECT FORMAT(1201375 , 2);
+SELECT ROUND(59, 9);
+SELECT ROUND(59, 1);
